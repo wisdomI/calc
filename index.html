@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A modern calculator with advanced mathematical operations" />
+    <title> Calculator App </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  
+  <body>
+    <!-- Main calculator container -->
+    <main class="calculator" role="application" aria-label="Calculator">
+      <!-- Display screen for showing input and results -->
+      <input 
+        type="text" 
+        id="display" 
+        disabled 
+        aria-label="Calculator display"
+        aria-readonly="true"
+      />
+      
+      <!-- Calculator keypad -->
+      <div class="buttons" role="group" aria-label="Calculator keypad">
+        <!-- Row 1: Numbers 1-3 and multiplication/division -->
+        <div class="button-row" role="group" aria-label="Row 1">
+          <button type="button" onclick="appendNumber('1')" aria-label="One">1</button>
+          <button type="button" onclick="appendNumber('2')" aria-label="Two">2</button>
+          <button type="button" onclick="appendNumber('3')" aria-label="Three">3</button>
+          <button type="button" class="operator" onclick="appendOperator('*')" aria-label="Multiply">×</button>
+          <button type="button" class="operator" onclick="appendOperator('/')" aria-label="Divide">÷</button>
+        </div>
+
+        <!-- Row 2: Numbers 4-6 and addition/subtraction -->
+        <div class="button-row" role="group" aria-label="Row 2">
+          <button type="button" onclick="appendNumber('4')" aria-label="Four">4</button>
+          <button type="button" onclick="appendNumber('5')" aria-label="Five">5</button>
+          <button type="button" onclick="appendNumber('6')" aria-label="Six">6</button>
+          <button type="button" class="operator" onclick="appendOperator('+')" aria-label="Add">+</button>
+          <button type="button" class="operator" onclick="appendOperator('-')" aria-label="Subtract">−</button>
+        </div>
+
+        <!-- Row 3: Numbers 7-9 and percentage/power -->
+        <div class="button-row" role="group" aria-label="Row 3">
+          <button type="button" onclick="appendNumber('7')" aria-label="Seven">7</button>
+          <button type="button" onclick="appendNumber('8')" aria-label="Eight">8</button>
+          <button type="button" onclick="appendNumber('9')" aria-label="Nine">9</button>
+          <button type="button" class="operator" onclick="appendOperator('%')" aria-label="Percentage">%</button>
+          <button type="button" class="operator" onclick="appendOperator('**')" aria-label="Power">^</button>
+        </div>
+
+        <!-- Row 4: Decimal, zero, delete and equals -->
+        <div class="button-row" role="group" aria-label="Row 4">
+          <button type="button" onclick="appendNumber('.')" aria-label="Decimal point">.</button>
+          <button type="button" onclick="appendNumber('0')" aria-label="Zero">0</button>
+          <button type="button" onclick="deleteLast()" aria-label="Delete last character">
+            <span class="delete-icon" aria-hidden="true">⌫</span>
+          </button>
+          <button type="button" class="equal" onclick="calculate()" aria-label="Calculate result">=</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

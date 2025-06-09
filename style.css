@@ -10,10 +10,11 @@
   --button-hover: #50506a; /* Number button hover */
   --operator-hover: #ffc233; /* Operator hover */
   --equal-hover: #e0e0e0; /* Equals hover */
+  --clear-error-color: #ff4d4d; /* Clear error button color */
+  --clear-error-hover: #ff1a1a; /* Clear error button hover */
 }
 
 /* ===== Base Styles ===== */
-
 * {
   margin: 0;
   padding: 0;
@@ -114,8 +115,7 @@ button.equal {
   font-size: 3rem;
   font-weight: light;
   border-radius: 30px; 
-  flex: 2; 
-  height: 70px; 
+  flex: 1; 
 }
 button.equal:hover {
   background: var(--equal-hover);
@@ -125,6 +125,14 @@ button.equal:hover {
 .delete-icon {
   font-size: 1.5rem;
   line-height: 1;
+}
+
+/* ====== Clear Error ===== */
+.clear {
+  background: var(--clear-error-color);
+}
+.clear:hover {
+  background: var(--clear-error-hover);
 }
 
 /* ===== Responsive Adjustments ===== */

@@ -38,6 +38,13 @@ function deleteLast() {
   display.value = display.value.slice(0, -1);
 }
 
+/**
+  * Clears the display after an error or when Escape is pressed
+ */
+function clearDisplay() {
+  display.value = '';
+}
+
 /* Calculates the result of the expression in the display */
 function calculate() {
   try {

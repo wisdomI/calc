@@ -1,6 +1,40 @@
 // Calculator display reference
 const display = document.getElementById('display');
 
+// Array to store calculation history
+let calculationHistory = [];
+
+/**
+ * Saves a calculation to history
+ * @param {string} expression - The calculation expression
+ * @param {number} result - The calculation result
+ */
+function saveToHistory(expression, result) {
+  calculationHistory.push({
+    expression: expression,
+    result: result,
+    timestamp: new Date().toLocaleTimeString()
+  });
+}
+
+/**
+ * Displays the calculation history
+ */
+function showHistory() {
+  if (calculationHistory.length === 0) {
+    alert('No calculation history available');
+    return;
+  }
+
+  const historyText = calculationHistory
+    .map((calc, index) => 
+      `${index + 1}. ${calc.expression} = ${calc.result} (${calc.timestamp})`
+    )
+    .join('\n');
+  
+  alert(historyText);
+}
+
 /**
  * Appends a number to the calculator display
  * @param {string} number - The number to append
@@ -48,13 +82,16 @@ function clearDisplay() {
 /* Calculates the result of the expression in the display */
 function calculate() {
   try {
+    const expression = display.value;
     // Evaluate the expression and update display
-    const result = eval(display.value);
+    const result = eval(expression);
     // Handle division by zero
     if (!isFinite(result)) {
       throw new Error('Division by zero');
     }
     display.value = result;
+    // Save to history after successful calculation
+    saveToHistory(expression, result);
   } catch (error) {
     display.value = 'Error';
     // Clear the error after 1.5 seconds
@@ -89,5 +126,9 @@ document.addEventListener('keydown', (event) => {
   // Handle Escape key to clear
   else if (key === 'Escape') {
     clearDisplay();
+  }
+  // Handle 'h' key to show history
+  else if (key === 'h' || key === 'H') {
+    showHistory();
   }
 });

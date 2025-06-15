@@ -26,6 +26,8 @@ body {
   background: var(--text-color);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -73,6 +75,7 @@ button {
   flex: 1;
   aspect-ratio: 1 / 1;
   height: 70px;
+  width: 100px;
   border: none;
   border-radius: 30px;
   font-size: 2rem;
@@ -151,4 +154,24 @@ button.equal:hover {
     height: 40px;
     font-size: 1rem;
   }
+}
+
+/* History button styling */
+.history {
+  width: auto;
+  background-color: var(--operator-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.history:hover {
+  background-color: var(--operator-hover);
+}
+
+.history:active {
+  background-color: var(--operator-bg)
 }

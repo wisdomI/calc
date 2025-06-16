@@ -22,17 +22,21 @@ function saveToHistory(expression, result) {
  */
 function showHistory() {
   if (calculationHistory.length === 0) {
-    alert('No calculation history available');
-    return;
+    document.getElementsByClassName('history-empty').innerHTML = '';
+    const historyEmpty = document.querySelector('.history-empty');
+    historyEmpty.textContent = 'No calculation history available';
   }
 
-  const historyText = calculationHistory
-    .map((calc, index) => 
-      `${index + 1}. ${calc.expression} = ${calc.result} (${calc.timestamp})`
-    )
-    .join('\n');
-  
-  alert(historyText);
+  // Clear the history list
+  const historyList = document.querySelector('ul');
+  historyList.innerHTML = '';
+
+  // Create a list item for each calculation
+  calculationHistory.forEach((calc, index) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${index + 1}. ${calc.expression} = ${calc.result} (${calc.timestamp})`;
+    historyList.appendChild(listItem);
+  });
 }
 
 /**
